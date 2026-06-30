@@ -4,6 +4,9 @@ import {
   BookOpen,
   Check,
   Clock3,
+  Compass,
+  GraduationCap,
+  HelpCircle,
   HeartHandshake,
   Mic2,
   Pause,
@@ -33,6 +36,106 @@ const rounds = [
   { speaker: "B", listener: "A", prompt: "A 向 B 给出同一个探问，B 探索并表达。" },
   { speaker: "A", listener: "B", prompt: "重复第一轮，允许更深、更慢、更诚实。" },
   { speaker: "B", listener: "A", prompt: "重复第二轮，完成一个完整循环。" },
+];
+
+const historyItems = [
+  [
+    "源头",
+    "二人禅的现代形式来自密集自我探问与二人沟通练习的结合：把禅修式的内在追问，放进面对面表达与倾听的结构里。",
+  ],
+  [
+    "结构化",
+    "早期密集闭关强调固定探问、轮换表达与倾听、严格时间容器和持续整合。形式的重点不是讨论观点，而是一次次回到当下真实经验。",
+  ],
+  [
+    "发展",
+    "后来的日常练习把密集闭关中的核心技术拆解为更容易学习和带领的形式：短轮次、清晰边界、温和探问和安全支持。",
+  ],
+  [
+    "当代应用",
+    "今天的二人禅常用于关系觉察、团体练习、静心课程和自我探索。它保留“探问、表达、接收”的核心，同时更重视创伤知情、同意和练习后的落地。",
+  ],
+];
+
+const learningPath = [
+  {
+    title: "1. 建立共同语言",
+    body: "先理解四个基础元素：探问、表达、倾听、整合。学习者要知道练习不是辩论、心理咨询或互相建议，而是让直接经验被清楚地说出和接收。",
+  },
+  {
+    title: "2. 熟悉标准流程",
+    body: "从 3 到 5 分钟一轮开始，使用同一个探问完成 A/B 交替。练习重点是守住角色、时间和边界，而不是追求特殊体验。",
+  },
+  {
+    title: "3. 扩充探问层次",
+    body: "探问可以从当下感受、身体觉察、关系经验，逐步进入身份、爱、生命、死亡、真实等更深主题。新手先用温和探问，稳定后再加深。",
+  },
+  {
+    title: "4. 加入记录与复盘",
+    body: "每次练习后记录三件事：我直接经验到了什么、我如何表达或回避、我需要怎样整合。复盘只整理自己的经验，不评价搭档。",
+  },
+];
+
+const practiceFormats = [
+  ["日常双人练习", "每周 1 到 2 次，每次 30 到 60 分钟。适合建立熟悉度、信任和稳定的表达能力。"],
+  ["小组练习", "由带领者说明规则、分组、计时和收尾。适合学习不同搭档带来的镜照，但需要更清楚的保密约定。"],
+  ["线上练习", "提前测试设备，保持摄像头稳定，约定断线后的处理方式。线上更需要慢速、简短和明确的结束流程。"],
+  ["密集练习", "持续时间更长、探问更集中，可能触及强烈经验。应由成熟带领者设计流程，并设置充分休息和整合。"],
+];
+
+const integrationPrompts = [
+  "刚才最真实、最有能量的一句话是什么？",
+  "我的身体现在有什么变化？",
+  "我在哪一刻开始解释、表演或保护自己？",
+  "我从倾听者那里接收到什么，而不是想象到什么？",
+  "练习后 24 小时内，我需要怎样照顾自己？",
+  "这次经验如何带回日常关系，而不是停留在练习场里？",
+];
+
+const facilitatorGuides = [
+  {
+    title: "先成为稳定的练习者",
+    body: "带领者需要长期亲身练习，熟悉表达者的迟疑、沉默、情绪涌动和身体反应。没有足够自我经验时，容易把带领变成讲解、分析或控制。",
+  },
+  {
+    title: "学习两套能力",
+    body: "一套是方法能力：探问设计、轮次安排、时间管理、整合流程。另一套是容器能力：同意、保密、边界、风险识别、团体氛围和暂停机制。",
+  },
+  {
+    title: "只维护结构，不接管内容",
+    body: "带领者不解释练习者的经验，不追问创伤细节，不把自己的答案塞给别人。职责是让探问清楚、规则清楚、结束清楚，并在必要时降速或停止。",
+  },
+  {
+    title: "从小范围开始",
+    body: "新带领者适合先带熟悉的人、短时段、温和探问。逐步练习开场说明、示范、计时、分组、复盘和处理突发情绪，再考虑公开工作坊或密集练习。",
+  },
+];
+
+const qaItems = [
+  [
+    "二人禅和普通聊天有什么不同？",
+    "聊天通常会回应、建议、比较和延伸话题；二人禅使用固定探问、固定角色和固定时间。倾听者主要提供在场，不把对方的内容拿来讨论。",
+  ],
+  [
+    "练习中沉默可以吗？",
+    "可以。沉默常常是探问进入身体和经验的过程。表达者可以停顿，也可以说“我现在不知道”“我感到空白”。这些都属于真实发生的内容。",
+  ],
+  [
+    "是否必须看着对方眼睛？",
+    "不必须。可以自然眼神接触，也可以看向地面或闭眼。关键是保持清醒和连接，而不是制造压力。",
+  ],
+  [
+    "强烈情绪出现时怎么办？",
+    "先减速，回到呼吸、身体触点和当下环境。若情绪过强、出现解离或安全风险，应立即停止练习，转向稳定支持或专业帮助。",
+  ],
+  [
+    "带领者可以给建议吗？",
+    "练习进行中不建议。结束后的分享也应避免诊断和评判。若需要教学，最好只说明方法、边界和下一步资源。",
+  ],
+  [
+    "这能替代心理治疗吗？",
+    "不能。二人禅是觉察与沟通练习，不是医疗、心理治疗或危机干预。正在经历严重心理困扰的人，应先获得专业支持。",
+  ],
 ];
 
 function formatTime(seconds) {
@@ -153,8 +256,12 @@ function App() {
         </a>
         <nav aria-label="主导航">
           <a href="#learn">学习</a>
+          <a href="#history">起源</a>
+          <a href="#path">路径</a>
           <a href="#practice">练习</a>
+          <a href="#facilitator">带领者</a>
           <a href="#inquiries">探问</a>
+          <a href="#qa">Q&A</a>
           <a href="#safety">边界</a>
         </nav>
       </header>
@@ -165,7 +272,10 @@ function App() {
           <div className="hero-overlay" />
           <div className="hero-content">
             <p className="eyebrow">学习 · 练习 · 整合</p>
-            <h1>二人禅 Dyad Meditation</h1>
+            <h1>
+              <span>二人禅</span>
+              <small>Dyad Meditation</small>
+            </h1>
             <p>
               一种把静心、诚实表达和深度倾听结合在一起的双人探问练习。它不追求正确答案，而是支持两个人在安全、清晰的结构中直接经验当下。
             </p>
@@ -174,6 +284,66 @@ function App() {
               <a href="#learn" className="ghost">
                 了解方法
               </a>
+            </div>
+          </div>
+        </section>
+
+        <section className="history" id="history">
+          <div className="section-heading">
+            <p>History</p>
+            <h2>从密集自我探问，到当代二人练习</h2>
+          </div>
+          <div className="history-layout">
+            <div className="history-intro">
+              <Compass />
+              <h3>历史脉络</h3>
+              <p>
+                这部分融合了密集探问传统与当代二人练习的教学框架：既保留自我探问、轮换表达和专注倾听，也加入更适合日常练习的安全、边界和整合设计。
+              </p>
+            </div>
+            <div className="history-timeline">
+              {historyItems.map(([title, body], index) => (
+                <article key={title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{body}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="learning-path" id="path">
+          <div className="section-heading">
+            <p>Learning Path</p>
+            <h2>系统学习二人禅，可以按四步推进</h2>
+          </div>
+          <div className="path-grid">
+            {learningPath.map((item) => (
+              <article key={item.title}>
+                <BookOpen />
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
+          </div>
+          <div className="formats-panel">
+            <div>
+              <p className="eyebrow">Practice Formats</p>
+              <h3>常见练习形式</h3>
+            </div>
+            <div className="formats-grid">
+              {practiceFormats.map(([title, body]) => (
+                <article key={title}>
+                  <Check size={18} />
+                  <div>
+                    <strong>{title}</strong>
+                    <p>{body}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -234,6 +404,35 @@ function App() {
 
         <PracticeTimer />
 
+        <section className="facilitator" id="facilitator">
+          <div className="facilitator-copy">
+            <p className="eyebrow">Facilitator</p>
+            <h2>带领者：学习方法，也学习如何守住容器</h2>
+            <p>
+              带领二人禅不是把别人推向深度，而是让每个人在清楚、安全、可退出的结构里探索。带领者的成熟度，体现在能否稳定地维护边界、节奏和整合，而不是制造强烈体验。
+            </p>
+          </div>
+          <div className="facilitator-grid">
+            {facilitatorGuides.map((item) => (
+              <article key={item.title}>
+                <GraduationCap />
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
+          </div>
+          <div className="facilitator-notes">
+            <h3>带领时的注意事项</h3>
+            <ul>
+              <li>开场说明练习目的、流程、保密原则、可暂停和可退出。</li>
+              <li>避免使用过度侵入的探问；新手先从身体、当下感受和关系觉察开始。</li>
+              <li>为每轮留出清晰开始和结束，不让分享无限延长。</li>
+              <li>观察过度激活、麻木、失联、惊恐和自伤风险；必要时停止练习。</li>
+              <li>结束后安排安静整合，不急于总结、评价或解释他人的经验。</li>
+            </ul>
+          </div>
+        </section>
+
         <section className="inquiries" id="inquiries">
           <div className="section-heading">
             <p>Inquiry Library</p>
@@ -245,6 +444,35 @@ function App() {
                 <Sparkles size={16} />
                 {item}
               </button>
+            ))}
+          </div>
+          <div className="integration-panel">
+            <div>
+              <p className="eyebrow">Integration</p>
+              <h3>练习后可以记录的问题</h3>
+            </div>
+            <div className="integration-grid">
+              {integrationPrompts.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="qa" id="qa">
+          <div className="section-heading">
+            <p>Q&A</p>
+            <h2>常见问题</h2>
+          </div>
+          <div className="qa-list">
+            {qaItems.map(([question, answer]) => (
+              <article key={question}>
+                <HelpCircle />
+                <div>
+                  <h3>{question}</h3>
+                  <p>{answer}</p>
+                </div>
+              </article>
             ))}
           </div>
         </section>
@@ -279,27 +507,27 @@ function App() {
 
         <section className="resources">
           <div className="section-heading">
-            <p>Sources</p>
-            <h2>本站整理依据</h2>
+            <p>Study Notes</p>
+            <h2>学习和实践时，请保留这几个重点</h2>
           </div>
           <div className="resource-list">
             <article>
               <BookOpen />
               <div>
-                <h3>The Power of Dyad Meditation</h3>
-                <p>整理其关于现代二人禅、线上练习、安全空间、整合时间和探问题库的框架。</p>
+                <h3>方法要清楚</h3>
+                <p>每次练习都要明确探问、角色、轮次、时长和结束方式。结构越清楚，练习者越容易放松进入经验。</p>
               </div>
             </article>
             <article>
               <BookOpen />
               <div>
-                <h3>The Enlightenment Intensive</h3>
-                <p>整理其关于二人沟通格式、自我探问、表达真实经验和密集闭关结构的历史脉络。</p>
+                <h3>整合要足够</h3>
+                <p>深度不只发生在表达时，也发生在练习后的安静、书写、散步和日常关系里。不要用下一轮体验覆盖上一轮经验。</p>
               </div>
             </article>
           </div>
           <p className="note">
-            内容为中文学习整理与实践指南，不是原书逐字翻译。深入学习、带领工作坊或参加密集闭关时，应阅读原书并接受合格带领者训练。
+            内容为中文学习整理与实践指南，不是原文翻译，也不替代心理治疗、医疗照护或合格带领者训练。深入带领工作坊或参加密集练习时，应接受系统训练和督导。
           </p>
         </section>
       </main>
