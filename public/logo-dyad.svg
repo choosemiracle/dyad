@@ -1,0 +1,12 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">二人禅 Logo</title>
+  <desc id="desc">两个相向而坐的人形与中间的开放空间，象征二人禅中的表达与倾听。</desc>
+  <rect width="256" height="256" rx="56" fill="#163331"/>
+  <circle cx="88" cy="80" r="17" fill="#F6D4A7"/>
+  <circle cx="168" cy="80" r="17" fill="#F6D4A7"/>
+  <path d="M63 151C63 121 84 105 116 105" stroke="#FFF7EC" stroke-width="18" stroke-linecap="round"/>
+  <path d="M193 151C193 121 172 105 140 105" stroke="#FFF7EC" stroke-width="18" stroke-linecap="round"/>
+  <path d="M88 174C106 190 150 190 168 174" stroke="#0F766E" stroke-width="14" stroke-linecap="round"/>
+  <path d="M128 106C111 127 112 153 128 177C144 153 145 127 128 106Z" fill="#D55F38"/>
+  <circle cx="128" cy="141" r="7" fill="#F6D4A7"/>
+</svg>

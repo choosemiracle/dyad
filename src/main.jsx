@@ -139,12 +139,17 @@ function PracticeTimer() {
 }
 
 function App() {
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <>
       <header className="site-header">
         <a className="brand" href="#top">
-          <span>二人禅</span>
-          <small>Dyad Meditation</small>
+          <img src={`${baseUrl}logo-dyad.svg`} alt="" />
+          <span>
+            二人禅
+            <small>Dyad Meditation</small>
+          </span>
         </a>
         <nav aria-label="主导航">
           <a href="#learn">学习</a>
@@ -156,7 +161,7 @@ function App() {
 
       <main id="top">
         <section className="hero">
-          <img src="/hero-dyad.png" alt="两人面对面进行二人禅练习的插画" />
+          <img src={`${baseUrl}hero-dyad.png`} alt="两人面对面进行二人禅练习的插画" />
           <div className="hero-overlay" />
           <div className="hero-content">
             <p className="eyebrow">学习 · 练习 · 整合</p>
@@ -300,7 +305,10 @@ function App() {
       </main>
 
       <footer>
-        <span>二人禅 Dyad Meditation</span>
+        <span className="footer-brand">
+          <img src={`${baseUrl}logo-dyad.svg`} alt="" />
+          二人禅 Dyad Meditation
+        </span>
         <span>愿表达真实，愿倾听清明。</span>
       </footer>
     </>

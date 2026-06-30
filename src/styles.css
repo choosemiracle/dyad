@@ -44,13 +44,21 @@ select {
 }
 
 .brand {
+  align-items: center;
   color: #24211d;
-  display: grid;
+  display: flex;
+  gap: 10px;
   line-height: 1.05;
   text-decoration: none;
 }
 
+.brand img {
+  height: 38px;
+  width: 38px;
+}
+
 .brand span {
+  display: grid;
   font-size: 20px;
   font-weight: 800;
 }
@@ -448,6 +456,18 @@ footer {
   justify-content: space-between;
   gap: 16px;
   padding: 28px clamp(20px, 5vw, 72px);
+}
+
+.footer-brand {
+  align-items: center;
+  display: inline-flex;
+  font-weight: 800;
+  gap: 10px;
+}
+
+.footer-brand img {
+  height: 34px;
+  width: 34px;
 }
 
 @media (max-width: 920px) {
