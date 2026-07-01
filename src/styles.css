@@ -1278,12 +1278,17 @@ footer {
   width: 34px;
 }
 
+.footer-contact,
 .footer-admin {
   color: rgba(255, 250, 241, 0.58);
   font-size: 13px;
   font-weight: 800;
-  margin-left: auto;
   text-decoration: none;
+}
+
+.footer-contact {
+  color: #f6d4a7;
+  margin-left: auto;
 }
 
 @media (max-width: 920px) {

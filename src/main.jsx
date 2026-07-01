@@ -1672,6 +1672,9 @@ function App() {
           <a href="#qa">Q&A</a>
           <a href="#safety">边界</a>
           <a href="#history">起源</a>
+          <a href="https://zcnv8lc63v15.feishu.cn/docx/ENSjdAKhOoDiIUxOQJycdzD8nSe?from=from_copylink" target="_blank" rel="noreferrer">
+            联系人
+          </a>
         </nav>
       </header>
 
@@ -1953,6 +1956,14 @@ function App() {
           二人禅 Dyad Meditation
         </span>
         <span>愿表达真实，愿倾听清明。</span>
+        <a
+          className="footer-contact"
+          href="https://zcnv8lc63v15.feishu.cn/docx/ENSjdAKhOoDiIUxOQJycdzD8nSe?from=from_copylink"
+          target="_blank"
+          rel="noreferrer"
+        >
+          联系人
+        </a>
         <a className="footer-admin" href="#admin">管理员</a>
       </footer>
     </>
