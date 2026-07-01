@@ -144,6 +144,33 @@ const rounds = [
   { speaker: "B", listener: "A", prompt: "A 再次给出探问，B 完成这一轮循环。" },
 ];
 
+const demoSteps = [
+  {
+    title: "设定空间",
+    role: "共同",
+    cue: "面对面坐稳，确认保密、可暂停、可退出。",
+    detail: "练习真正开始前，先让身体知道这里是清楚、安全、没有表现压力的空间。",
+  },
+  {
+    title: "给出探问",
+    role: "倾听者",
+    cue: "请告诉我：此刻你注意到了什么？",
+    detail: "倾听者只给出探问，然后安静在场，不解释、不点头暗示、不接管内容。",
+  },
+  {
+    title: "向内接触",
+    role: "表达者",
+    cue: "我先感受一下……胸口有点紧，手心是热的。",
+    detail: "表达者不急着讲完整故事，而是把注意力放回当下的身体、情绪和念头。",
+  },
+  {
+    title: "完整接收",
+    role: "倾听者",
+    cue: "谢谢。我听到了。",
+    detail: "倾听者用简单收尾闭合这一轮沟通，让表达者知道信息已经被接收。",
+  },
+];
+
 const historyItems = [
   [
     "源头",
@@ -195,6 +222,234 @@ const integrationPrompts = [
   "我从倾听者那里接收到什么，而不是想象到什么？",
   "练习后 24 小时内，我需要怎样照顾自己？",
   "这次经验如何带回日常关系，而不是停留在练习场里？",
+];
+
+const extensionVariants = [
+  {
+    title: "温和入门式",
+    lead: "适合第一次接触、彼此不熟、线上练习或当日状态比较敏感的人。重点不是深入，而是学习结构、节奏和被接收的感觉。",
+    blocks: [
+      {
+        heading: "怎么做",
+        items: [
+          "每轮 3 分钟，A/B 交替 2 到 4 轮即可。",
+          "只使用温和探问，例如“告诉我：此刻你注意到了什么？”",
+          "表达者可以说身体感受、情绪、念头、空白或“不知道”。",
+          "倾听者只给出探问和结束语，不追问、不引导、不安慰。",
+        ],
+      },
+      {
+        heading: "适用提醒",
+        items: [
+          "适合建立基本信任，不适合急着处理复杂关系冲突。",
+          "如果出现强烈情绪，缩短轮次并增加结束后的安静整合。",
+          "第一次宁可浅一点、清楚一点，也不要追求突破。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "身体觉察式",
+    lead: "把探问重点放在身体和当下感受上，帮助表达者从故事、分析和解释里回到直接经验。",
+    blocks: [
+      {
+        heading: "可用探问",
+        items: [
+          "告诉我：你现在如何感受自己的身体？",
+          "告诉我：这个感觉在身体哪里？",
+          "告诉我：这个感觉的形状、温度、重量或移动是什么？",
+          "告诉我：当你允许它存在时，发生了什么？",
+        ],
+      },
+      {
+        heading: "练习重点",
+        items: [
+          "表达者少讲事件背景，多描述当下可感知的经验。",
+          "倾听者不要把身体反应解释成心理原因。",
+          "适合情绪很多、头脑很快、容易进入长篇叙事的人。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "关系映照式",
+    lead: "用于观察“被看见、被听见、靠近、退缩、防御”等关系经验。它不是伴侣争论工具，而是关系觉察练习。",
+    blocks: [
+      {
+        heading: "可用探问",
+        items: [
+          "告诉我：当你看着我时，你注意到了什么？",
+          "告诉我：当你被倾听时发生了什么？",
+          "告诉我：你如何保护自己不被看见？",
+          "告诉我：你真正想让我听见什么？",
+        ],
+      },
+      {
+        heading: "边界提醒",
+        items: [
+          "只表达自己的经验，不评价、指责或诊断对方。",
+          "不把练习内容拿去作为关系谈判的证据。",
+          "如果双方正处在强冲突中，应先选择第三方带领或暂缓练习。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "单一探问深潜式",
+    lead: "连续多轮只使用同一个探问，适合已有经验、容器稳定、练习后有整合时间的人。",
+    blocks: [
+      {
+        heading: "怎么做",
+        items: [
+          "选择一个核心探问，例如“告诉我：你是谁？”或“告诉我：什么是爱？”",
+          "每轮 5 分钟起，连续 4 到 8 轮，始终不改变探问措辞。",
+          "表达者每次都从当下重新接触，不复述上一轮答案。",
+          "倾听者保持同一探问、同一节奏、同一稳定在场。",
+        ],
+      },
+      {
+        heading: "适用提醒",
+        items: [
+          "深不等于强烈，稳定、具体、可整合更重要。",
+          "如果越练越失控、越迷糊或越脱离身体，应立即减速。",
+          "适合练习后有书写、散步、安静或带领者复盘的安排。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "三人轮换式",
+    lead: "三个人一组轮换表达者、倾听者和观察者。观察者不介入，只在结束后反馈结构层面的观察。",
+    blocks: [
+      {
+        heading: "角色安排",
+        items: [
+          "表达者：接收探问并表达当下直接经验。",
+          "倾听者：给出探问、保持在场、结束时简短接收。",
+          "观察者：观察时间、规则和节奏，不评判内容。",
+          "每轮结束后顺时针换角色，确保三个人都体验三种位置。",
+        ],
+      },
+      {
+        heading: "观察反馈",
+        items: [
+          "只反馈可观察到的结构，例如是否打断、是否改探问、是否跑成聊天。",
+          "不评价表达内容，不分析表达者心理。",
+          "适合带领者训练、学习者互相校准和小组练习前培训。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "小组鱼缸式",
+    lead: "一组人在中央示范，其他人外围安静观察。适合教学现场，让新手看见二人禅的节奏和边界。",
+    blocks: [
+      {
+        heading: "怎么做",
+        items: [
+          "中央两人做 1 到 2 轮短练习，外围只观察，不评论、不记录隐私。",
+          "带领者提前说明观察重点：探问是否简短、倾听是否稳定、表达是否回到当下。",
+          "示范后只讨论结构和学习点，不讨论表达者个人内容。",
+        ],
+      },
+      {
+        heading: "适用提醒",
+        items: [
+          "只适合轻量、温和探问，不适合深度创伤或高度私人主题。",
+          "中央练习者必须明确同意被观察，并且可以随时停止。",
+          "带领者要保护示范者，不让小组把示范变成点评个人。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "书写整合式",
+    lead: "在每轮表达后加入短暂书写，帮助练习者把体验沉淀下来，尤其适合线上课程、学习营和长期自修。",
+    blocks: [
+      {
+        heading: "流程建议",
+        items: [
+          "每轮表达结束后安静 1 到 2 分钟，写下身体变化、关键词和想带走的一句话。",
+          "四轮结束后再写 5 分钟，不急着互相讨论。",
+          "书写内容默认属于个人，不要求分享。",
+        ],
+      },
+      {
+        heading: "整合价值",
+        items: [
+          "帮助练习者区分直接经验、解释、故事和洞见。",
+          "让强烈体验有落点，减少练完后漂浮或过度兴奋。",
+          "适合把二人禅带回日常关系，而不是停留在练习场景中。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "静默凝视式",
+    lead: "减少语言比例，让两个人在安全同意下练习目光接触、身体觉察和短句表达。",
+    blocks: [
+      {
+        heading: "怎么做",
+        items: [
+          "先确认双方都愿意进行目光接触，任何一方都可以移开视线或暂停。",
+          "每轮 2 到 4 分钟静默凝视，再用 1 到 2 分钟表达当下经验。",
+          "可用探问：“当你看见我，也被我看见时，你注意到了什么？”",
+        ],
+      },
+      {
+        heading: "边界提醒",
+        items: [
+          "不适合刚认识且安全感不足的人直接做长时间凝视。",
+          "不要把凝视变成亲密压力或关系测试。",
+          "如果出现不适、羞耻、紧张或麻木，可以直接说出来并暂停。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "线上远距式",
+    lead: "适合异地搭档和线上小组，但需要更清楚的技术准备和中断处理方式。",
+    blocks: [
+      {
+        heading: "技术设置",
+        items: [
+          "练习前测试网络、摄像头、麦克风和计时器。",
+          "摄像头固定在稳定位置，尽量能看到脸和上半身。",
+          "提前约定断线后如何重连、等待多久、是否重启这一轮。",
+        ],
+      },
+      {
+        heading: "练习调整",
+        items: [
+          "线上更适合短轮次、温和探问和明确结束语。",
+          "倾听者要减少屏幕分心，不看消息、不切换窗口。",
+          "练完后留出离线整合时间，不马上进入工作或社交软件。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "主题探索式",
+    lead: "围绕一个主题连续练习，例如亲密、边界、金钱、创造力、生命方向或死亡。适合课程和长期小组。",
+    blocks: [
+      {
+        heading: "设计方式",
+        items: [
+          "先选一个主题，再设计 3 到 5 个由浅入深的探问。",
+          "从身体和当下开始，再进入关系、自我认同和生命意义。",
+          "每个主题都要安排结束整合，避免只打开、不收束。",
+        ],
+      },
+      {
+        heading: "示例结构",
+        items: [
+          "边界主题：我此刻如何感受自己的边界？我什么时候会越过自己？我真正想说的不是什么？",
+          "亲密主题：当我靠近另一个人时发生什么？我如何保护自己？我渴望怎样被看见？",
+          "创造力主题：什么正在阻止我表达？我害怕被谁看见？我现在愿意迈出的一个小动作是什么？",
+        ],
+      },
+    ],
+  },
 ];
 
 const facilitatorGuides = [
@@ -869,6 +1124,81 @@ function formatTime(seconds) {
   return `${minutes}:${rest}`;
 }
 
+function ZenParticles() {
+  return (
+    <div className="zen-particles" aria-hidden="true">
+      {Array.from({ length: 22 }, (_, index) => (
+        <span
+          key={index}
+          style={{
+            "--x": `${8 + ((index * 17) % 86)}%`,
+            "--y": `${10 + ((index * 23) % 78)}%`,
+            "--size": `${5 + (index % 5) * 3}px`,
+            "--delay": `${index * -1.8}s`,
+            "--duration": `${18 + (index % 6) * 4}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+function DyadDemo() {
+  const [activeStep, setActiveStep] = useState(0);
+  const active = demoSteps[activeStep];
+
+  return (
+    <section className="dyad-demo reveal-on-scroll" id="demo">
+      <div className="demo-copy">
+        <p className="eyebrow">互动演示</p>
+        <h2>先看一遍，再开始练</h2>
+        <p>
+          二人禅的重点不是说得多，而是在一个清楚的结构里，练习真诚表达和完整接收。点击下面四步，感受一次完整轮次的节奏。
+        </p>
+        <div className="demo-steps" aria-label="二人禅演示步骤">
+          {demoSteps.map((step, index) => (
+            <button
+              type="button"
+              className={activeStep === index ? "active" : ""}
+              onClick={() => setActiveStep(index)}
+              key={step.title}
+            >
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              {step.title}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="demo-stage">
+        <div className="demo-visual" aria-hidden="true">
+          <div className="demo-mat" />
+          <div className="demo-person demo-person-left">
+            <span className="demo-head" />
+            <span className="demo-body" />
+            <span className="demo-seat" />
+            <span className="demo-heart" />
+          </div>
+          <div className="demo-person demo-person-right">
+            <span className="demo-head" />
+            <span className="demo-body" />
+            <span className="demo-seat" />
+            <span className="demo-heart" />
+          </div>
+          <div className="demo-orb" />
+          <div className="demo-breath-ring" />
+        </div>
+        <article className="demo-card">
+          <span>{active.role}</span>
+          <h3>{active.title}</h3>
+          <blockquote>{active.cue}</blockquote>
+          <p>{active.detail}</p>
+        </article>
+      </div>
+    </section>
+  );
+}
+
 function PracticeTimer() {
   const [minutes, setMinutes] = useState(3);
   const [roundIndex, setRoundIndex] = useState(0);
@@ -907,7 +1237,7 @@ function PracticeTimer() {
   const activeRound = rounds[roundIndex];
 
   return (
-    <section className="practice" id="practice">
+    <section className="practice reveal-on-scroll" id="practice">
       <div className="section-heading">
         <p>练习工具</p>
         <h2>新手模式：四轮二人禅计时器</h2>
@@ -1220,6 +1550,72 @@ function MechanismPage({ baseUrl }) {
   );
 }
 
+function ExtensionsPage({ baseUrl }) {
+  return (
+    <main className="professional-page extensions-page" id="extensions">
+      <header className="professional-header">
+        <a className="brand" href="#top">
+          <img src={`${baseUrl}logo-dyad.png`} alt="" />
+          <span>
+            二人禅
+            <small>Dyad Meditation</small>
+          </span>
+        </a>
+        <a href="#top">返回首页</a>
+      </header>
+
+      <section className="professional-hero">
+        <p className="eyebrow">拓展</p>
+        <h1>二人禅的变种练习方式</h1>
+        <p>
+          当基本流程稳定之后，可以根据场景、人数、主题和练习深度，发展出不同变体。所有变体都应保留三个核心：清楚探问、真诚表达、稳定接收。
+        </p>
+      </section>
+
+      <section className="professional-content extensions-content">
+        <article className="extension-principles">
+          <h3>使用变体前，先守住三个原则</h3>
+          <div className="professional-blocks">
+            <div>
+              <h4>结构先于深度</h4>
+              <ul>
+                <li>任何变体都要清楚说明时间、角色、探问、暂停方式和结束方式。</li>
+                <li>变体不是为了制造强烈体验，而是为了服务更稳定、更直接的觉察。</li>
+              </ul>
+            </div>
+            <div>
+              <h4>同意先于练习</h4>
+              <ul>
+                <li>涉及凝视、关系主题、小组观察或深度探问时，需要更明确的同意。</li>
+                <li>任何一方都可以跳过、暂停、退出，不需要解释理由。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        {extensionVariants.map((variant) => (
+          <article key={variant.title}>
+            <h3>{variant.title}</h3>
+            <p>{variant.lead}</p>
+            <div className="professional-blocks">
+              {variant.blocks.map((block) => (
+                <div key={block.heading}>
+                  <h4>{block.heading}</h4>
+                  <ul>
+                    {block.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </section>
+    </main>
+  );
+}
+
 function renderInlineMarkdown(text) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return parts.map((part, index) => {
@@ -1394,6 +1790,7 @@ function BlogPage({ baseUrl, selectedPostId }) {
           <a href="#professional">深潜</a>
           <a href="#facilitator">带领</a>
           <a href="#mechanism">机理</a>
+          <a href="#extensions">拓展</a>
           <a href="#blog">文章</a>
         </nav>
         <a className="footer-admin" href="#admin">管理员</a>
@@ -1636,6 +2033,31 @@ function App() {
     return () => window.removeEventListener("hashchange", updateHash);
   }, []);
 
+  useEffect(() => {
+    const nodes = Array.from(document.querySelectorAll(".reveal-on-scroll"));
+
+    if (!nodes.length) return undefined;
+
+    if (!("IntersectionObserver" in window)) {
+      nodes.forEach((node) => node.classList.add("is-visible"));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+    );
+
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, [hash]);
+
   if (hash === "#professional") {
     return <ProfessionalTrainingPage baseUrl={baseUrl} />;
   }
@@ -1646,6 +2068,10 @@ function App() {
 
   if (hash === "#mechanism") {
     return <MechanismPage baseUrl={baseUrl} />;
+  }
+
+  if (hash === "#extensions") {
+    return <ExtensionsPage baseUrl={baseUrl} />;
   }
 
   if (hash === "#admin") {
@@ -1669,6 +2095,7 @@ function App() {
         <nav aria-label="主导航">
           <a href="#learn">认识</a>
           <a href="#first-practice">第一次</a>
+          <a href="#demo">演示</a>
           <a href="#practice">计时器</a>
           <a href="#inquiries">探问</a>
           <a href="#qa">Q&A</a>
@@ -1680,7 +2107,8 @@ function App() {
         </nav>
       </header>
 
-      <main id="top">
+      <main id="top" className="site-main">
+        <ZenParticles />
         <section className="hero">
           <img src={`${baseUrl}hero-dyad.png`} alt="两人面对面进行二人禅练习的插画" />
           <div className="hero-overlay" />
@@ -1701,7 +2129,7 @@ function App() {
           </div>
         </section>
 
-        <section className="route-strip" aria-label="按当前阶段选择入口">
+        <section className="route-strip reveal-on-scroll" aria-label="按当前阶段选择入口">
           {audienceRoutes.map(([title, body, href]) => (
             <a href={href} key={title}>
               <strong>{title}</strong>
@@ -1710,7 +2138,7 @@ function App() {
           ))}
         </section>
 
-        <section className="intro" id="learn">
+        <section className="intro reveal-on-scroll" id="learn">
           <div className="section-heading">
             <p>先看这里</p>
             <h2>3 分钟了解二人禅</h2>
@@ -1747,7 +2175,9 @@ function App() {
           </div>
         </section>
 
-        <section className="first-practice" id="first-practice">
+        <DyadDemo />
+
+        <section className="first-practice reveal-on-scroll" id="first-practice">
           <div className="method-copy">
             <p className="eyebrow">第一次练习</p>
             <h2>按这 5 步，就能开始</h2>
@@ -1796,7 +2226,7 @@ function App() {
 
         <PracticeTimer />
 
-        <section className="inquiries" id="inquiries">
+        <section className="inquiries reveal-on-scroll" id="inquiries">
           <div className="section-heading">
             <p>探问题库</p>
             <h2>按经验程度选择探问</h2>
@@ -1830,7 +2260,7 @@ function App() {
           </div>
         </section>
 
-        <section className="learning-path" id="path">
+        <section className="learning-path reveal-on-scroll" id="path">
           <div className="section-heading">
             <p>学习路线</p>
             <h2>练过一次之后，再按阶段推进</h2>
@@ -1863,7 +2293,7 @@ function App() {
           </div>
         </section>
 
-        <section className="qa" id="qa">
+        <section className="qa reveal-on-scroll" id="qa">
           <div className="section-heading">
             <p>常见问题</p>
             <h2>常见问题</h2>
@@ -1881,7 +2311,7 @@ function App() {
           </div>
         </section>
 
-        <section className="safety" id="safety">
+        <section className="safety reveal-on-scroll" id="safety">
           <div>
             <p className="eyebrow">安全边界</p>
             <h2>安全边界比深度更重要</h2>
@@ -1909,7 +2339,7 @@ function App() {
           </ul>
         </section>
 
-        <section className="suitability">
+        <section className="suitability reveal-on-scroll">
           <div className="section-heading">
             <p>适合与边界</p>
             <h2>不是所有状态都适合做二人禅</h2>
@@ -1924,7 +2354,7 @@ function App() {
           </div>
         </section>
 
-        <section className="history" id="history">
+        <section className="history reveal-on-scroll" id="history">
           <div className="section-heading">
             <p>起源与发展</p>
             <h2>从密集自我探问，到当代二人练习</h2>
@@ -1962,6 +2392,7 @@ function App() {
           <a href="#professional">深潜</a>
           <a href="#facilitator">带领</a>
           <a href="#mechanism">机理</a>
+          <a href="#extensions">拓展</a>
           <a href="#blog">文章</a>
         </nav>
         <a
