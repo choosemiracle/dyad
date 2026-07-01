@@ -1302,10 +1302,6 @@ footer {
   color: #f6d4a7;
 }
 
-.footer-contact {
-  color: #f6d4a7;
-}
-
 @media (max-width: 920px) {
   .site-header {
     align-items: start;
