@@ -1390,6 +1390,12 @@ function BlogPage({ baseUrl, selectedPostId }) {
           二人禅 Dyad Meditation
         </span>
         <span>愿表达真实，愿倾听清明。</span>
+        <nav className="footer-links" aria-label="深度入口">
+          <a href="#professional">深潜</a>
+          <a href="#facilitator">带领</a>
+          <a href="#mechanism">机理</a>
+          <a href="#blog">文章</a>
+        </nav>
         <a className="footer-admin" href="#admin">管理员</a>
       </footer>
     </>
@@ -1665,10 +1671,6 @@ function App() {
           <a href="#first-practice">第一次</a>
           <a href="#practice">计时器</a>
           <a href="#inquiries">探问</a>
-          <a href="#professional">专业训练</a>
-          <a href="#facilitator">带领者</a>
-          <a href="#mechanism">机理</a>
-          <a href="#blog">文章</a>
           <a href="#qa">Q&A</a>
           <a href="#safety">边界</a>
           <a href="#history">起源</a>
@@ -1956,6 +1958,12 @@ function App() {
           二人禅 Dyad Meditation
         </span>
         <span>愿表达真实，愿倾听清明。</span>
+        <nav className="footer-links" aria-label="深度入口">
+          <a href="#professional">深潜</a>
+          <a href="#facilitator">带领</a>
+          <a href="#mechanism">机理</a>
+          <a href="#blog">文章</a>
+        </nav>
         <a
           className="footer-contact"
           href="https://zcnv8lc63v15.feishu.cn/docx/ENSjdAKhOoDiIUxOQJycdzD8nSe?from=from_copylink"
