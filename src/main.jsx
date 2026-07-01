@@ -26,12 +26,49 @@ const quickFacts = [
   ["会得到什么", "更清楚地看见当下经验、表达习惯、关系模式和需要整合的内容。"],
 ];
 
+const defaultPasswords = {
+  professional: "2renchan",
+  facilitator: "leadingnow",
+  mechanism: "errenchanjili",
+  admin: "weijia77",
+};
+
+const passwordLabels = {
+  professional: "专业训练",
+  facilitator: "带领者",
+  mechanism: "机理",
+  admin: "管理员",
+};
+
+function readStoredJson(key, fallback) {
+  try {
+    const stored = window.localStorage.getItem(key);
+    return stored ? JSON.parse(stored) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function getAccessPasswords() {
+  return { ...defaultPasswords, ...readStoredJson("dyadAccessPasswords", {}) };
+}
+
+function getAccessPassword(key) {
+  return getAccessPasswords()[key] || defaultPasswords[key];
+}
+
+function getBlogPosts() {
+  return readStoredJson("dyadBlogPosts", []);
+}
+
 const audienceRoutes = [
   ["我是第一次来", "从 5 步练习和协议开始", "#first-practice"],
   ["我想直接练", "使用四轮计时器", "#practice"],
   ["我练过几次", "选择合适的探问", "#inquiries"],
   ["我要专业训练", "进入进阶练习质量指南", "#professional"],
   ["我要带小组", "查看带领者检查清单", "#facilitator"],
+  ["我想懂机理", "深入理解背后的作用机制", "#mechanism"],
+  ["我想看文章", "阅读后续更新的学习文章", "#blog"],
   ["我担心安全", "先看边界和不适合状态", "#safety"],
 ];
 
@@ -280,6 +317,117 @@ const professionalSections = [
     ],
   },
   {
+    title: "倾听者过程建议",
+    lead: "在 Dyad 冥想中，倾听者也可称为见证者。倾听者所护持的特殊空间，使表达者不必回到日常社交防御，而能更直接地接触真实经验。",
+    blocks: [
+      {
+        heading: "给出精确指令，但不呼唤姓名",
+        items: [
+          "每个周期开始时，倾听者只需准确给出指导语，例如“告诉我：你是谁？”或“告诉我：爱在你内在如何存活？”",
+          "同一轮练习中不要改变措辞，也不要解释题目；指令只说一次，让表达者自己向内接收。",
+          "给出指令时不要呼唤对方姓名。姓名容易把表达者拉回日常身份、关系角色和社交防御。",
+          "指令要清楚、稳定、简短；它不是鼓励语，也不是心理访谈的问题。",
+        ],
+      },
+      {
+        heading: "睁眼与柔和注视",
+        items: [
+          "即使表达者闭眼向内探寻，倾听者也保持睁眼，柔和地看着对方。",
+          "这种视觉连接不是凝视或施压，而是一个无声的锚点：这里有人全心在场。",
+          "如果表达者偶尔睁眼，他可以确认自己仍被稳定接住，而不是被评估或遗弃。",
+          "目光柔和、身体安定，比做出反应更能支持表达者深入。",
+        ],
+      },
+      {
+        heading: "零肢体反馈与零面部暗示",
+        items: [
+          "倾听者不点头、不微笑鼓励、不皱眉、不叹气，也不通过表情传递赞同或反对。",
+          "哪怕是安抚性的微笑，也可能让表达者开始迎合倾听者，而不是继续向内探寻。",
+          "不要刻意绷成没有生命的表情；如果表达者因真实体验而自然大笑，倾听者可以被动地随之微笑或轻笑，但不要主动带头。",
+          "重点不是“没有情感”，而是不给表达者任何需要回应你的信号。",
+        ],
+      },
+      {
+        heading: "杜绝干预、建议与同情式拯救",
+        items: [
+          "当表达者痛苦、哭泣或崩溃时，不给建议，不做心理分析，也不急着安慰。",
+          "倾听者要传递一种更深的信任：对方有能力接触自己的经验，并从内在智慧中恢复。",
+          "如果出现安全风险，应停止练习并寻求现实支持；这不是干预体验，而是保护安全。",
+          "不要用“我懂你”“你会好起来”的话语接管对方的过程。",
+        ],
+      },
+      {
+        heading: "身体静止与隔绝外在动作",
+        items: [
+          "在 5 分钟内尽量保持身体静止，避免伸展、转头、走动或做手势。",
+          "不喝水、不吃东西、不看手机、不回复信息、不抽烟，也不做其他细小活动。",
+          "任何外在动作都会分散表达者的注意力，让他重新感到自己正在被社交观察。",
+          "倾听者用稳定身体帮助练习空间稳定下来。",
+        ],
+      },
+      {
+        heading: "内在觉察与沟通闭合",
+        items: [
+          "倾听者自己的评判、不耐烦、走神、想安慰或想解释，都会出现；任务是觉察它们，并把注意力带回表达者。",
+          "角色互换后，不回应、不评价伴侣刚才说过的内容；只对自己的内部体验负责。",
+          "计时结束时，倾听者只说一句简单的“谢谢”或“我听到了”。",
+          "这句话不是评价，而是给表达者一个明确讯号：信息已被接收，这一轮沟通可以闭合。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "表达者过程建议",
+    lead: "如果倾听者护持了稳定空间，表达者的任务就是把向内探寻得到的直接结果，尽可能原样交给这个空间。",
+    blocks: [
+      {
+        heading: "接收指令后，先向内探寻",
+        items: [
+          "听到指令后，不要立刻用头脑组织语言，也不要马上开始解释。",
+          "先接收这个指令，让它进入身体、感受、图像、记忆和当下经验。",
+          "一个实用比例是：大约一半时间用于静默探寻，一半时间用于开口表达。",
+          "表达之前允许自己停顿；真正的表达往往来自接触，而不是反应速度。",
+        ],
+      },
+      {
+        heading: "从体验中诉说，而不是谈论体验",
+        items: [
+          "谈论体验通常是分析、讲故事、解释原因或构造剧本。",
+          "从体验中诉说，是从身体、情绪和当下鲜活状态里发声。",
+          "不要只描述让你生气的人或事，而是描述“愤怒此刻在我身体里是什么感觉”。",
+          "当你直接表达体验，而不是被故事带走时，内在智慧更容易浮现。",
+        ],
+      },
+      {
+        heading: "只沟通探寻的直接结果",
+        items: [
+          "表达者像诚实的汇报者，把因探问而浮现的念头、情绪、身体反应原样说出。",
+          "不增加戏剧化解释，也不遗漏正在发生的关键经验。",
+          "如果出现与探问无关的杂念，先判断它是否由探寻直接引发；若不是，可以放下。",
+          "被大声沟通出来的，应尽量是向内探寻的直接结果。",
+        ],
+      },
+      {
+        heading: "只谈论自己，不回应伴侣",
+        items: [
+          "角色互换后，不评论伴侣上一轮说过的话，也不借自己的表达去安慰、反驳或回应伴侣。",
+          "表达完全针对自己和自己的个人体验。",
+          "不批评、不指责、不辱骂伴侣，也不试图改变伴侣。",
+          "即使内容涉及关系，也要回到“这在我里面如何发生”。",
+        ],
+      },
+      {
+        heading: "闭眼或睁眼均可",
+        items: [
+          "表达者可以闭眼，以减少外部刺激并更容易向内探索。",
+          "也可以睁眼看着伴侣，让表达发生在关系连接中。",
+          "无论选择哪种方式，目的都是更完整地接触自己的内在经验。",
+          "不要把眼神接触当成要求，也不要把闭眼当成逃避；看它是否服务于当下真实。",
+        ],
+      },
+    ],
+  },
+  {
     title: "直接经验 vs 头脑解释",
     lead: "二人禅不是禁止思考，而是训练练习者辨认：我是在经验当下，还是在用解释离开当下。",
     blocks: [
@@ -451,6 +599,39 @@ const professionalSections = [
     ],
   },
   {
+    title: "共同注意事项",
+    lead: "过程建议不是为了制造紧张，而是为了让练习空间更清楚。规则越清楚，表达者越容易放下社交表演，倾听者也越不容易接管对方。",
+    blocks: [
+      {
+        heading: "练习前确认",
+        items: [
+          "确认探问、每轮时长、轮次数量、结束方式和可暂停机制。",
+          "确认保密原则：未经同意，不在练习外转述对方内容。",
+          "确认双方都自愿参与；任何一方都可以跳过、暂停或退出。",
+          "如果双方正处在强冲突中，不建议用二人禅直接处理冲突主题。",
+        ],
+      },
+      {
+        heading: "练习中保持纪律",
+        items: [
+          "倾听者不引导内容，表达者不回应伴侣内容。",
+          "双方都不把练习变成说服、解释、辩论或关系谈判。",
+          "强烈体验出现时先减速，不把强烈当成深度的证明。",
+          "如果出现失联、解离、惊恐、自伤表达或无法回到当下，立即停止练习。",
+        ],
+      },
+      {
+        heading: "练习后落地",
+        items: [
+          "先喝水、感受脚底、看房间，让身体知道练习已经结束。",
+          "不要马上分析对方，也不要立刻把练习内容拿去讨论关系问题。",
+          "可以各自写下：我直接经验到了什么？我需要怎样照顾自己？",
+          "如果体验很强，减少当天刺激，必要时寻求成熟带领者或专业支持。",
+        ],
+      },
+    ],
+  },
+  {
     title: "进阶练习结构",
     lead: "以下结构只适合已有基础经验、边界清楚、整合能力稳定的练习者。这些结构不是新手入口。",
     blocks: [
@@ -462,6 +643,185 @@ const professionalSections = [
           "关系主题探问：在信任基础上探索被看见、接收、边界和亲密。",
           "小组轮换练习：在清楚保密协议下与不同搭档练习倾听和表达。",
           "密集练习前准备：确认身心状态、支持系统、休息安排和整合计划。",
+        ],
+      },
+    ],
+  },
+];
+
+const mechanismSections = [
+  {
+    title: "源流：把参问放进关系沟通",
+    lead: "二人禅的现代形式诞生于 1968 年前后，它把东方自我探问传统与西方结构化双人沟通结合起来：一个人向内探寻并表达，另一个人完整接收。",
+    blocks: [
+      {
+        heading: "两个源头",
+        items: [
+          "东方传统提供了核心探问：例如“我是谁”“什么是爱”“什么是另一个人”。这些探问不是讨论题，而是把注意力指向直接经验。",
+          "双人沟通结构提供了关系容器：固定角色、固定时间、轮换表达、完整接收。",
+          "二人禅因此不是普通聊天，也不是独自静坐，而是“被关系支持的内在探寻”。",
+        ],
+      },
+      {
+        heading: "为什么两个人练",
+        items: [
+          "独自静坐时，很多内容只在头脑里循环；面对一个稳定倾听者时，内在经验会被带到关系场中完成表达。",
+          "倾听者不提供答案，却提供接收；表达者不需要证明自己，只需要如实沟通探寻所得。",
+          "这种结构让修行从“我一个人处理自己”转向“在清楚边界中被见证”。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "沟通循环：心智积压如何松动",
+    lead: "二人禅的一个核心理解是：许多反复出现的念头，并不只是孤立杂念，而像是未完成、未被接收、未能落地的沟通冲动。",
+    blocks: [
+      {
+        heading: "从探寻到表达",
+        items: [
+          "表达者先接收探问，向内接触当下浮现的身体感受、情绪、图像、记忆、念头或空白。",
+          "随后把探寻的直接结果说出来，而不是加工成故事、理论或漂亮答案。",
+          "当内容被真实说出，头脑里原本反复盘旋的材料会获得一个出口。",
+        ],
+      },
+      {
+        heading: "从接收到闭合",
+        items: [
+          "倾听者不评价、不回应内容，只稳定接收，并在轮次结束时用一句“谢谢”或“我听到了”闭合这一轮。",
+          "这个闭合不是社交礼貌，而是在心理上确认：这份信息已经被接收，不必继续在内部反复发送。",
+          "一次练习会不断重复“探寻、表达、接收、闭合”，于是心智积压逐层松动。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "空间机理：不反应如何降低防御",
+    lead: "日常交流里，人们很快会被表情、建议、安慰、反驳或沉默压力牵动。二人禅要求倾听者尽量减少反应，是为了让表达者不必迎合外界。",
+    blocks: [
+      {
+        heading: "非评判不是冷漠",
+        items: [
+          "倾听者保持睁眼、柔和注视和身体稳定，让表达者知道这里有人在场。",
+          "同时，倾听者不点头、不微笑鼓励、不皱眉、不分析，避免把表达者拉回“我要表现得对”的社交模式。",
+          "这种不反应不是无情，而是把解释权还给表达者，让经验自己展开。",
+        ],
+      },
+      {
+        heading: "安全感来自边界",
+        items: [
+          "真正的安全不只来自温柔语气，也来自规则清楚：保密、可暂停、可退出、不追问隐私。",
+          "当边界稳定时，表达者更容易接触羞耻、害怕、愤怒、悲伤或空白，而不急着防御。",
+          "倾听者越能守住结构，越不需要用安慰和建议来证明自己有用。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "表达机理：从体验中说",
+    lead: "二人禅训练的不是口才，而是从直接经验中发声。关键差别是：我是在谈论经验，还是正在把经验本身带出来？",
+    blocks: [
+      {
+        heading: "谈论体验",
+        items: [
+          "谈论体验通常表现为解释原因、讲完整故事、分析别人、总结自己、寻找正确答案。",
+          "这些内容不一定错误，但很容易让人离开当下，回到熟悉的身份叙事。",
+          "当表达者一直解释“为什么”，练习就会接近聊天、咨询或自我分析。",
+        ],
+      },
+      {
+        heading: "从体验中说",
+        items: [
+          "从体验中说，是报告此刻正在发生的身体感受、情绪、图像、冲动和真实语言。",
+          "例如不只说“我很愤怒”，而是说“我说到这里时胸口发热，牙关紧，我想推开你”。",
+          "越贴近当下，表达越不需要精彩；它会更直接、更具体，也更容易被整合。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "注意力机理：固定探问与固定轮次",
+    lead: "同一个探问被反复给出，不是机械重复，而是帮助意识穿过第一层答案，进入更深、更少加工的经验。",
+    blocks: [
+      {
+        heading: "探问像一根线",
+        items: [
+          "固定探问让注意力持续朝同一个方向深入，而不是被话题带走。",
+          "第一轮常出现概念答案；继续探寻后，身体、情绪、记忆和更深层的直觉才可能浮现。",
+          "探问越简短，越能减少理解负担，让表达者直接与经验接触。",
+        ],
+      },
+      {
+        heading: "时间结构保护深度",
+        items: [
+          "固定时长让双方知道何时开始、何时结束，减少关系中的权力不平衡。",
+          "轮换角色让每个人都体验表达与倾听，不让一方长期成为倾倒者或拯救者。",
+          "结束后的静默和整合，则让被打开的经验回到身体和生活。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "关系与神经系统：共同调节，而不是互相治疗",
+    lead: "二人禅会影响神经系统，但它不是医学治疗。更稳妥的理解是：清楚结构、稳定目光和非评判接收，会支持两个人从应激回到更可觉察的状态。",
+    blocks: [
+      {
+        heading: "共调节",
+        items: [
+          "一个稳定、安静、不过度反应的倾听者，会给表达者的神经系统提供安全线索。",
+          "当表达者不再需要防御、解释或迎合，呼吸、肌肉紧张和注意力可能逐渐放松。",
+          "这种共同调节不是倾听者替对方疗愈，而是双方在规则中共同保持清醒和在场。",
+        ],
+      },
+      {
+        heading: "关于脑波与共振",
+        items: [
+          "冥想、稳定呼吸和安全关系可能伴随更放松的身心状态，但不宜把每次练习都说成必然进入某种脑波。",
+          "目光、姿态和情绪会在关系中互相影响；可以把它理解为身体层面的同步与社会连结。",
+          "对练习者最有用的判断不是有没有神秘体验，而是练习后是否更清楚、更稳定、更能回到生活。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "转化机理：从身份叙事到直接经验",
+    lead: "二人禅的深层目标不是制造强烈情绪，而是让人穿过角色、解释和防御，直接接触“此刻真实是什么”。",
+    blocks: [
+      {
+        heading: "参问如何工作",
+        items: [
+          "“告诉我你是谁”这类探问会触碰身份核心：名字、角色、经历、成就、创伤和自我判断都会先浮现。",
+          "表达者一次次把这些浮现内容沟通出来，心智的表层答案会逐渐耗尽。",
+          "当解释暂时松开，练习者可能接触到更直接的存在感、觉知、爱或生命力。",
+        ],
+      },
+      {
+        heading: "直接经验不是结论",
+        items: [
+          "直接经验不是一句哲学答案，也不是“我懂了”的概念感。",
+          "它更像某一刻不再隔着故事看自己，而是直接知道、直接感受、直接在场。",
+          "这种经验需要整合进日常关系，否则容易变成高峰体验记忆或新的身份标签。",
+        ],
+      },
+    ],
+  },
+  {
+    title: "常见误解与边界",
+    lead: "理解机理是为了更精准地练习，不是为了神化方法。二人禅越有力量，越需要边界、节奏和现实感。",
+    blocks: [
+      {
+        heading: "不要神化强度",
+        items: [
+          "哭泣、崩溃、发抖、空白都可能出现，但它们不是深度的唯一指标。",
+          "健康的深度通常伴随更稳定的觉察、更真诚的表达和更好的整合能力。",
+          "如果练习后长期失控、麻木或无法生活，说明需要减速，并寻求专业支持。",
+        ],
+      },
+      {
+        heading: "不要替代治疗",
+        items: [
+          "二人禅可以支持觉察、表达和关系练习，但不替代心理治疗、医疗照护或危机干预。",
+          "带领者不诊断、不处理创伤细节、不承诺疗效。",
+          "成熟练习者知道什么时候继续探问，也知道什么时候停止、休息和转介。",
         ],
       },
     ],
@@ -616,7 +976,7 @@ function ProfessionalTrainingPage({ baseUrl }) {
 
   function submitPassword(event) {
     event.preventDefault();
-    if (password === "2renchan") {
+    if (password === getAccessPassword("professional")) {
       setUnlocked(true);
       window.sessionStorage.setItem("professionalTrainingUnlocked", "true");
       setError("");
@@ -629,7 +989,7 @@ function ProfessionalTrainingPage({ baseUrl }) {
     <main className="professional-page" id="professional">
       <header className="professional-header">
         <a className="brand" href="#top">
-          <img src={`${baseUrl}logo-dyad.svg`} alt="" />
+          <img src={`${baseUrl}logo-dyad.png`} alt="" />
           <span>
             二人禅
             <small>Dyad Meditation</small>
@@ -640,8 +1000,8 @@ function ProfessionalTrainingPage({ baseUrl }) {
 
       <section className="professional-hero">
         <p className="eyebrow">专业训练</p>
-        <h1>让练习更稳、更深、更不跑偏</h1>
-        <p>这里面向已有练习经验者、带领者和小组组织者，重点训练练习质量、伦理边界与整合能力。</p>
+        <h1>让练习更稳、更深、更直接</h1>
+        <p>本篇内容面向已有经验者、带领者和召集者，重点训练练习质量、伦理边界与整合能力。</p>
       </section>
 
       {!unlocked ? (
@@ -697,7 +1057,7 @@ function FacilitatorPage({ baseUrl }) {
 
   function submitPassword(event) {
     event.preventDefault();
-    if (password === "leadingnow") {
+    if (password === getAccessPassword("facilitator")) {
       setUnlocked(true);
       window.sessionStorage.setItem("facilitatorUnlocked", "true");
       setError("");
@@ -710,7 +1070,7 @@ function FacilitatorPage({ baseUrl }) {
     <main className="professional-page facilitator-page" id="facilitator">
       <header className="professional-header">
         <a className="brand" href="#top">
-          <img src={`${baseUrl}logo-dyad.svg`} alt="" />
+          <img src={`${baseUrl}logo-dyad.png`} alt="" />
           <span>
             二人禅
             <small>Dyad Meditation</small>
@@ -779,6 +1139,487 @@ function FacilitatorPage({ baseUrl }) {
   );
 }
 
+function MechanismPage({ baseUrl }) {
+  const [password, setPassword] = useState("");
+  const [unlocked, setUnlocked] = useState(() => window.sessionStorage.getItem("mechanismUnlocked") === "true");
+  const [error, setError] = useState("");
+
+  function submitPassword(event) {
+    event.preventDefault();
+    if (password === getAccessPassword("mechanism")) {
+      setUnlocked(true);
+      window.sessionStorage.setItem("mechanismUnlocked", "true");
+      setError("");
+      return;
+    }
+    setError("密码不正确，请重新输入。");
+  }
+
+  return (
+    <main className="professional-page mechanism-page" id="mechanism">
+      <header className="professional-header">
+        <a className="brand" href="#top">
+          <img src={`${baseUrl}logo-dyad.png`} alt="" />
+          <span>
+            二人禅
+            <small>Dyad Meditation</small>
+          </span>
+        </a>
+        <a href="#top">返回首页</a>
+      </header>
+
+      <section className="professional-hero">
+        <p className="eyebrow">机理</p>
+        <h1>理解二人禅为什么有效</h1>
+        <p>本篇内容从历史源流、沟通循环、场域、表达、神经系统与直接经验等角度，帮助练习者深入领会二人禅的运作方式。</p>
+      </section>
+
+      {!unlocked ? (
+        <form className="password-panel" onSubmit={submitPassword}>
+          <LockKeyhole size={28} />
+          <div>
+            <h3>输入密码访问机理模块</h3>
+            <p>该模块适合已经熟悉基本流程、希望理解二人禅背后心理力学与修行逻辑的人阅读。</p>
+            <label>
+              访问密码
+              <input
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                placeholder="请输入密码"
+                autoComplete="current-password"
+              />
+            </label>
+            {error ? <p className="password-error">{error}</p> : null}
+            <button type="submit">进入机理模块</button>
+          </div>
+        </form>
+      ) : (
+        <section className="professional-content mechanism-content">
+          {mechanismSections.map((section) => (
+            <article key={section.title}>
+              <h3>{section.title}</h3>
+              <p>{section.lead}</p>
+              <div className="professional-blocks">
+                {section.blocks.map((block) => (
+                  <div key={block.heading}>
+                    <h4>{block.heading}</h4>
+                    <ul>
+                      {block.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </section>
+      )}
+    </main>
+  );
+}
+
+function renderInlineMarkdown(text) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={`${part}-${index}`}>{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+}
+
+function MarkdownContent({ text }) {
+  const lines = text.split("\n");
+  const nodes = [];
+  let listItems = [];
+
+  function flushList() {
+    if (listItems.length === 0) return;
+    nodes.push(
+      <ul key={`list-${nodes.length}`}>
+        {listItems.map((item) => (
+          <li key={item}>{renderInlineMarkdown(item)}</li>
+        ))}
+      </ul>,
+    );
+    listItems = [];
+  }
+
+  lines.forEach((rawLine) => {
+    const line = rawLine.trim();
+    if (!line) {
+      flushList();
+      return;
+    }
+    if (line.startsWith("- ") || line.startsWith("* ")) {
+      listItems.push(line.slice(2).trim());
+      return;
+    }
+    flushList();
+    if (line.startsWith("### ")) {
+      nodes.push(<h4 key={line}>{renderInlineMarkdown(line.slice(4))}</h4>);
+      return;
+    }
+    if (line.startsWith("## ")) {
+      nodes.push(<h3 key={line}>{renderInlineMarkdown(line.slice(3))}</h3>);
+      return;
+    }
+    if (line.startsWith("# ")) {
+      nodes.push(<h2 key={line}>{renderInlineMarkdown(line.slice(2))}</h2>);
+      return;
+    }
+    nodes.push(<p key={line}>{renderInlineMarkdown(line)}</p>);
+  });
+  flushList();
+
+  return <div className="markdown-content">{nodes}</div>;
+}
+
+function BlogPage({ baseUrl, selectedPostId }) {
+  const [posts, setPosts] = useState(() => getBlogPosts());
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [unlockTick, setUnlockTick] = useState(0);
+
+  useEffect(() => {
+    const syncPosts = () => setPosts(getBlogPosts());
+    window.addEventListener("storage", syncPosts);
+    window.addEventListener("dyadBlogPostsUpdated", syncPosts);
+    return () => {
+      window.removeEventListener("storage", syncPosts);
+      window.removeEventListener("dyadBlogPostsUpdated", syncPosts);
+    };
+  }, []);
+
+  const selectedPost = selectedPostId ? posts.find((post) => post.id === selectedPostId) : null;
+  const postPassword = selectedPost?.accessPassword || "";
+  const unlocked = selectedPost ? window.sessionStorage.getItem(`blogPostUnlocked:${selectedPost.id}`) === "true" : false;
+  const needsPassword = Boolean(postPassword) && !unlocked;
+
+  function submitPassword(event) {
+    event.preventDefault();
+    if (selectedPost && password === postPassword) {
+      window.sessionStorage.setItem(`blogPostUnlocked:${selectedPost.id}`, "true");
+      setError("");
+      setPassword("");
+      setUnlockTick((value) => value + 1);
+      return;
+    }
+    setError("密码不正确，请重新输入。");
+  }
+
+  return (
+    <>
+      <header className="site-header">
+        <a className="brand" href="#top">
+          <img src={`${baseUrl}logo-dyad.png`} alt="" />
+          <span>
+            二人禅
+            <small>Dyad Meditation</small>
+          </span>
+        </a>
+        <nav aria-label="文章导航">
+          <a href="#top">首页</a>
+          <a href="#blog">文章列表</a>
+          <a href="#admin">管理员</a>
+        </nav>
+      </header>
+
+      <main className="blog-page">
+        <section className="blog-hero">
+          <p className="eyebrow">文章</p>
+          <h1>{selectedPost ? selectedPost.title : "后续学习文章"}</h1>
+          <p>{selectedPost ? selectedPost.summary : "这里收纳二人禅学习札记、活动记录、练习指南和深入理解材料。"}</p>
+        </section>
+
+        {!selectedPost ? (
+          posts.length === 0 ? (
+            <div className="empty-panel">
+              <BookOpen />
+              <h3>还没有发布文章</h3>
+              <p>管理员可以在后台添加文章，用于持续丰富二人禅的学习内容。</p>
+            </div>
+          ) : (
+            <section className="blog-list" aria-label="文章列表">
+              {posts.map((post) => (
+                <article key={post.id}>
+                  <span>{post.date}</span>
+                  <h3>
+                    <a href={`#blog-${post.id}`}>{post.title}</a>
+                  </h3>
+                  <p>{post.summary}</p>
+                  {post.accessPassword ? <small>需要访问密码</small> : null}
+                </article>
+              ))}
+            </section>
+          )
+        ) : needsPassword ? (
+          <form className="blog-password-panel" onSubmit={submitPassword}>
+            <LockKeyhole size={26} />
+            <div>
+              <h3>输入密码阅读文章</h3>
+              <p>这篇文章设置了访问密码。</p>
+              <label>
+                访问密码
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="请输入密码"
+                  autoComplete="current-password"
+                />
+              </label>
+              {error ? <p className="password-error">{error}</p> : null}
+              <button type="submit">阅读文章</button>
+            </div>
+          </form>
+        ) : (
+          <article className="blog-detail">
+            <a href="#blog" className="back-link">返回文章列表</a>
+            <span>{selectedPost.date}</span>
+            <MarkdownContent text={selectedPost.body} />
+          </article>
+        )}
+      </main>
+
+      <footer>
+        <span className="footer-brand">
+          <img src={`${baseUrl}logo-dyad.png`} alt="" />
+          二人禅 Dyad Meditation
+        </span>
+        <span>愿表达真实，愿倾听清明。</span>
+        <a className="footer-admin" href="#admin">管理员</a>
+      </footer>
+    </>
+  );
+}
+
+function AdminPage({ baseUrl }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [unlocked, setUnlocked] = useState(() => window.sessionStorage.getItem("adminUnlocked") === "true");
+  const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
+  const [passwords, setPasswords] = useState(() => getAccessPasswords());
+  const [posts, setPosts] = useState(() => getBlogPosts());
+  const [postDraft, setPostDraft] = useState({
+    title: "",
+    date: new Date().toISOString().slice(0, 10),
+    accessPassword: "",
+    summary: "",
+    body: "",
+  });
+
+  function submitLogin(event) {
+    event.preventDefault();
+    if (username === "admin" && password === getAccessPassword("admin")) {
+      setUnlocked(true);
+      window.sessionStorage.setItem("adminUnlocked", "true");
+      setError("");
+      return;
+    }
+    setError("账号或密码不正确，请重新输入。");
+  }
+
+  function savePasswords(event) {
+    event.preventDefault();
+    const normalized = Object.fromEntries(
+      Object.entries(passwords).map(([key, value]) => [key, String(value).trim() || defaultPasswords[key]]),
+    );
+    window.localStorage.setItem("dyadAccessPasswords", JSON.stringify(normalized));
+    setPasswords(normalized);
+    setNotice("密码已保存。已解锁的会话不受影响，新访问会使用新密码。");
+  }
+
+  function addPost(event) {
+    event.preventDefault();
+    const title = postDraft.title.trim();
+    const summary = postDraft.summary.trim();
+    const body = postDraft.body.trim();
+    if (!title || !summary || !body) {
+      setNotice("请填写文章标题、摘要和正文。");
+      return;
+    }
+    const nextPosts = [
+      {
+        id: `${Date.now()}`,
+        title,
+        date: postDraft.date || new Date().toISOString().slice(0, 10),
+        accessPassword: postDraft.accessPassword.trim(),
+        summary,
+        body,
+      },
+      ...posts,
+    ];
+    window.localStorage.setItem("dyadBlogPosts", JSON.stringify(nextPosts));
+    window.dispatchEvent(new Event("dyadBlogPostsUpdated"));
+    setPosts(nextPosts);
+    setPostDraft({ title: "", date: new Date().toISOString().slice(0, 10), accessPassword: "", summary: "", body: "" });
+    setNotice("文章已添加。");
+  }
+
+  function deletePost(id) {
+    const nextPosts = posts.filter((post) => post.id !== id);
+    window.localStorage.setItem("dyadBlogPosts", JSON.stringify(nextPosts));
+    window.dispatchEvent(new Event("dyadBlogPostsUpdated"));
+    setPosts(nextPosts);
+    setNotice("文章已删除。");
+  }
+
+  return (
+    <main className="professional-page admin-page" id="admin">
+      <header className="professional-header">
+        <a className="brand" href="#top">
+          <img src={`${baseUrl}logo-dyad.png`} alt="" />
+          <span>
+            二人禅
+            <small>Dyad Meditation</small>
+          </span>
+        </a>
+        <a href="#top">返回首页</a>
+      </header>
+
+      <section className="professional-hero">
+        <p className="eyebrow">管理员</p>
+        <h1>管理密码与文章</h1>
+        <p>这里可以修改需要密码访问的模块密码，也可以添加后续学习文章。</p>
+      </section>
+
+      {!unlocked ? (
+        <form className="password-panel" onSubmit={submitLogin}>
+          <LockKeyhole size={28} />
+          <div>
+            <h3>管理员登录</h3>
+            <p>请输入管理员账号和密码。</p>
+            <label>
+              账号
+              <input value={username} onChange={(event) => setUsername(event.target.value)} placeholder="请输入账号" autoComplete="username" />
+            </label>
+            <label>
+              密码
+              <input
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                placeholder="请输入密码"
+                autoComplete="current-password"
+              />
+            </label>
+            {error ? <p className="password-error">{error}</p> : null}
+            <button type="submit">进入管理员模块</button>
+          </div>
+        </form>
+      ) : (
+        <section className="admin-content">
+          {notice ? <p className="admin-notice">{notice}</p> : null}
+
+          <form className="admin-card" onSubmit={savePasswords}>
+            <div>
+              <p className="eyebrow">访问密码</p>
+              <h2>修改受保护模块密码</h2>
+              <p>这里用于修改独立模块的访问密码。单篇文章的访问密码，请在添加文章时单独设置。</p>
+            </div>
+            <div className="admin-fields">
+              {Object.keys(defaultPasswords).map((key) => (
+                <label key={key}>
+                  {passwordLabels[key]}
+                  <input
+                    type="text"
+                    value={passwords[key] || ""}
+                    onChange={(event) => setPasswords((current) => ({ ...current, [key]: event.target.value }))}
+                  />
+                </label>
+              ))}
+            </div>
+            <button type="submit">保存密码</button>
+          </form>
+
+          <form className="admin-card" onSubmit={addPost}>
+            <div>
+              <p className="eyebrow">博客文章</p>
+              <h2>添加文章</h2>
+              <p>文章会显示在独立「文章」页的列表中。列表只显示标题、日期和摘要，点击后进入正文详情。</p>
+            </div>
+            <div className="admin-fields">
+              <label>
+                标题
+                <input
+                  value={postDraft.title}
+                  onChange={(event) => setPostDraft((draft) => ({ ...draft, title: event.target.value }))}
+                  placeholder="请输入文章标题"
+                />
+              </label>
+              <label>
+                日期
+                <input
+                  type="date"
+                  value={postDraft.date}
+                  onChange={(event) => setPostDraft((draft) => ({ ...draft, date: event.target.value }))}
+                />
+              </label>
+              <label>
+                访问密码
+                <input
+                  type="text"
+                  value={postDraft.accessPassword}
+                  onChange={(event) => setPostDraft((draft) => ({ ...draft, accessPassword: event.target.value }))}
+                  placeholder="留空则公开阅读"
+                />
+              </label>
+              <label>
+                摘要
+                <input
+                  value={postDraft.summary}
+                  onChange={(event) => setPostDraft((draft) => ({ ...draft, summary: event.target.value }))}
+                  placeholder="用于文章列表的简短介绍"
+                />
+              </label>
+              <label className="wide-field">
+                正文
+                <textarea
+                  value={postDraft.body}
+                  onChange={(event) => setPostDraft((draft) => ({ ...draft, body: event.target.value }))}
+                  placeholder="支持 Markdown：# 标题、## 小标题、- 列表、**加粗**"
+                  rows="8"
+                />
+              </label>
+            </div>
+            <button type="submit">发布文章</button>
+          </form>
+
+          <div className="admin-card">
+            <div>
+              <p className="eyebrow">已发布</p>
+              <h2>文章列表</h2>
+            </div>
+            {posts.length === 0 ? (
+              <p>当前还没有文章。</p>
+            ) : (
+              <div className="admin-posts">
+                {posts.map((post) => (
+                  <article key={post.id}>
+                    <div>
+                      <span>{post.date}</span>
+                      <h3>{post.title}</h3>
+                      <p>{post.summary}</p>
+                      {post.accessPassword ? <small>已设置访问密码</small> : null}
+                    </div>
+                    <button type="button" onClick={() => deletePost(post.id)}>
+                      删除
+                    </button>
+                  </article>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+    </main>
+  );
+}
+
 function App() {
   const baseUrl = import.meta.env.BASE_URL;
   const [hash, setHash] = useState(() => window.location.hash);
@@ -797,11 +1638,23 @@ function App() {
     return <FacilitatorPage baseUrl={baseUrl} />;
   }
 
+  if (hash === "#mechanism") {
+    return <MechanismPage baseUrl={baseUrl} />;
+  }
+
+  if (hash === "#admin") {
+    return <AdminPage baseUrl={baseUrl} />;
+  }
+
+  if (hash === "#blog" || hash.startsWith("#blog-")) {
+    return <BlogPage baseUrl={baseUrl} selectedPostId={hash.startsWith("#blog-") ? hash.slice(6) : ""} />;
+  }
+
   return (
     <>
       <header className="site-header">
         <a className="brand" href="#top">
-          <img src={`${baseUrl}logo-dyad.svg`} alt="" />
+          <img src={`${baseUrl}logo-dyad.png`} alt="" />
           <span>
             二人禅
             <small>Dyad Meditation</small>
@@ -814,6 +1667,8 @@ function App() {
           <a href="#inquiries">探问</a>
           <a href="#professional">专业训练</a>
           <a href="#facilitator">带领者</a>
+          <a href="#mechanism">机理</a>
+          <a href="#blog">文章</a>
           <a href="#qa">Q&A</a>
           <a href="#safety">边界</a>
           <a href="#history">起源</a>
@@ -825,7 +1680,6 @@ function App() {
           <img src={`${baseUrl}hero-dyad.png`} alt="两人面对面进行二人禅练习的插画" />
           <div className="hero-overlay" />
           <div className="hero-content">
-            <p className="eyebrow">学习 · 练习 · 整合</p>
             <h1>
               <span>二人禅</span>
               <small>Dyad Meditation</small>
@@ -1095,10 +1949,11 @@ function App() {
 
       <footer>
         <span className="footer-brand">
-          <img src={`${baseUrl}logo-dyad.svg`} alt="" />
+          <img src={`${baseUrl}logo-dyad.png`} alt="" />
           二人禅 Dyad Meditation
         </span>
         <span>愿表达真实，愿倾听清明。</span>
+        <a className="footer-admin" href="#admin">管理员</a>
       </footer>
     </>
   );

@@ -1,12 +1,24 @@
 <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">二人禅 Logo</title>
-  <desc id="desc">两个相向而坐的人形与中间的开放空间，象征二人禅中的表达与倾听。</desc>
-  <rect width="256" height="256" rx="56" fill="#163331"/>
-  <circle cx="88" cy="80" r="17" fill="#F6D4A7"/>
-  <circle cx="168" cy="80" r="17" fill="#F6D4A7"/>
-  <path d="M63 151C63 121 84 105 116 105" stroke="#FFF7EC" stroke-width="18" stroke-linecap="round"/>
-  <path d="M193 151C193 121 172 105 140 105" stroke="#FFF7EC" stroke-width="18" stroke-linecap="round"/>
-  <path d="M88 174C106 190 150 190 168 174" stroke="#0F766E" stroke-width="14" stroke-linecap="round"/>
-  <path d="M128 106C111 127 112 153 128 177C144 153 145 127 128 106Z" fill="#D55F38"/>
-  <circle cx="128" cy="141" r="7" fill="#F6D4A7"/>
+  <desc id="desc">水墨圆相中两位相对静坐者，中央线条相交成无限形，象征二人禅的真诚表达、深度倾听与共同临在。</desc>
+  <rect width="256" height="256" fill="#f3f0e7"/>
+  <g stroke="#111820" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M207 55C232 83 236 126 222 164C203 215 146 240 94 223C46 208 19 162 27 112C36 60 83 25 136 29C163 31 188 40 207 55Z" stroke-width="12" opacity=".96"/>
+    <path d="M213 74C227 104 225 143 209 173C184 220 126 233 79 210C39 191 20 151 30 108C43 53 99 22 153 34" stroke-width="5" opacity=".7"/>
+    <path d="M198 45C225 70 239 112 231 150" stroke-width="3" opacity=".45"/>
+    <path d="M50 66C80 35 127 22 167 35" stroke-width="4" opacity=".38"/>
+    <path d="M31 136C31 178 65 215 109 224" stroke-width="4" opacity=".38"/>
+  </g>
+  <g fill="#111820">
+    <circle cx="86" cy="87" r="10"/>
+    <circle cx="170" cy="87" r="10"/>
+    <path d="M83 103C71 116 65 132 64 152C64 164 68 174 73 181C93 178 106 166 113 148C102 142 91 127 83 103Z"/>
+    <path d="M173 103C185 116 191 132 192 152C192 164 188 174 183 181C163 178 150 166 143 148C154 142 165 127 173 103Z"/>
+  </g>
+  <g stroke="#111820" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M63 174C86 180 106 171 128 145C150 171 170 180 193 174" stroke-width="7"/>
+    <path d="M77 132C96 136 112 148 128 166C144 148 160 136 179 132" stroke-width="4" opacity=".88"/>
+    <path d="M76 187C101 193 154 193 180 187" stroke-width="4" opacity=".74"/>
+    <path d="M78 200C106 206 149 206 178 200" stroke-width="3" opacity=".55"/>
+  </g>
 </svg>

@@ -24,7 +24,8 @@ body {
 
 button,
 select,
-input {
+input,
+textarea {
   font: inherit;
 }
 
@@ -105,7 +106,7 @@ nav a {
 
 .hero-content {
   color: #fffaf1;
-  max-width: 760px;
+  max-width: 650px;
   padding: clamp(150px, 18vh, 210px) clamp(22px, 6vw, 86px) 120px;
   position: relative;
 }
@@ -133,16 +134,17 @@ p {
 
 h1 {
   display: grid;
-  font-size: clamp(72px, 13vw, 178px);
+  font-size: clamp(58px, 9vw, 128px);
   line-height: 0.96;
   margin-bottom: 24px;
 }
 
 h1 small {
   display: block;
-  font-size: clamp(34px, 5.5vw, 72px);
+  font-size: clamp(30px, 4.4vw, 56px);
   font-weight: 500;
   line-height: 1.02;
+  margin-top: clamp(14px, 2vw, 28px);
   white-space: nowrap;
 }
 
@@ -150,7 +152,7 @@ h1 small {
   color: rgba(255, 250, 241, 0.9);
   font-size: clamp(18px, 2vw, 24px);
   line-height: 1.75;
-  max-width: 680px;
+  max-width: 610px;
 }
 
 .hero-actions,
@@ -595,7 +597,8 @@ select {
   padding: 0 12px;
 }
 
-input {
+input,
+textarea {
   background: #fffaf1;
   border: 1px solid rgba(36, 33, 29, 0.16);
   border-radius: 8px;
@@ -603,6 +606,12 @@ input {
   min-height: 44px;
   padding: 0 12px;
   width: 100%;
+}
+
+textarea {
+  line-height: 1.7;
+  padding: 12px;
+  resize: vertical;
 }
 
 .flow-step {
@@ -889,6 +898,271 @@ input {
   padding-left: 20px;
 }
 
+.blog,
+.blog-page {
+  background: #fffaf1;
+}
+
+.blog-page {
+  min-height: 100vh;
+  padding: clamp(140px, 18vh, 190px) clamp(20px, 6vw, 86px) clamp(72px, 10vw, 120px);
+}
+
+.blog-hero {
+  margin: 0 auto clamp(34px, 5vw, 56px);
+  max-width: 1180px;
+}
+
+.blog-hero h1 {
+  font-size: clamp(54px, 8vw, 112px);
+  line-height: 1.02;
+  max-width: 980px;
+}
+
+.blog-hero p:not(.eyebrow) {
+  color: #5f574f;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700;
+  max-width: 880px;
+}
+
+.empty-panel {
+  align-items: center;
+  background: #f6f2ea;
+  border: 1px solid rgba(36, 33, 29, 0.1);
+  border-radius: 8px;
+  display: grid;
+  justify-items: center;
+  margin: 0 auto;
+  max-width: 760px;
+  padding: clamp(28px, 5vw, 48px);
+  text-align: center;
+}
+
+.empty-panel svg {
+  color: #d55f38;
+}
+
+.blog-password-panel {
+  align-items: start;
+  background: #f6f2ea;
+  border: 1px solid rgba(36, 33, 29, 0.1);
+  border-radius: 8px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 38px 1fr;
+  margin: 0 auto;
+  max-width: 760px;
+  padding: clamp(22px, 4vw, 34px);
+}
+
+.blog-password-panel svg {
+  color: #d55f38;
+  margin-top: 4px;
+}
+
+.blog-password-panel label {
+  color: #403a34;
+  display: grid;
+  font-weight: 800;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.blog-password-panel button {
+  background: #d55f38;
+  border: 0;
+  border-radius: 8px;
+  color: #fffaf1;
+  cursor: pointer;
+  font-weight: 800;
+  margin-top: 14px;
+  min-height: 46px;
+  padding: 0 18px;
+}
+
+.blog-list {
+  display: grid;
+  gap: 18px;
+  margin: 0 auto;
+  max-width: 980px;
+}
+
+.blog-list article {
+  background: #f6f2ea;
+  border: 1px solid rgba(36, 33, 29, 0.1);
+  border-radius: 8px;
+  padding: clamp(22px, 4vw, 34px);
+}
+
+.blog-list h3 a {
+  color: #24211d;
+  text-decoration: none;
+}
+
+.blog-list h3 a:hover {
+  color: #0f766e;
+}
+
+.blog-list small,
+.admin-posts small {
+  color: #d55f38;
+  display: inline-block;
+  font-weight: 800;
+  margin-top: 8px;
+}
+
+.blog-list article > span,
+.admin-posts span {
+  color: #8b7d6d;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.blog-body {
+  border-top: 1px solid rgba(36, 33, 29, 0.1);
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.blog-body p {
+  margin: 0;
+}
+
+.blog-detail {
+  background: #f6f2ea;
+  border: 1px solid rgba(36, 33, 29, 0.1);
+  border-radius: 8px;
+  margin: 0 auto;
+  max-width: 920px;
+  padding: clamp(24px, 5vw, 46px);
+}
+
+.blog-detail > span {
+  color: #8b7d6d;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 800;
+  margin: 18px 0 4px;
+}
+
+.back-link {
+  color: #0f766e;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.markdown-content {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content p,
+.markdown-content ul {
+  margin: 0;
+}
+
+.markdown-content h2 {
+  font-size: clamp(30px, 4vw, 48px);
+}
+
+.markdown-content h3 {
+  font-size: clamp(24px, 3vw, 34px);
+}
+
+.markdown-content h4 {
+  font-size: 20px;
+}
+
+.markdown-content ul {
+  display: grid;
+  gap: 8px;
+  padding-left: 22px;
+}
+
+.admin-content {
+  display: grid;
+  gap: 22px;
+  margin: 0 auto;
+  max-width: 1080px;
+  padding: 0 clamp(20px, 5vw, 72px) clamp(72px, 10vw, 120px);
+}
+
+.admin-notice {
+  background: #e6eee9;
+  border: 1px solid rgba(15, 118, 110, 0.18);
+  border-radius: 8px;
+  color: #163331;
+  font-weight: 800;
+  margin: 0;
+  padding: 16px 18px;
+}
+
+.admin-card {
+  background: #fffaf1;
+  border-radius: 8px;
+  display: grid;
+  gap: 20px;
+  padding: clamp(24px, 4vw, 36px);
+}
+
+.admin-card button {
+  background: #d55f38;
+  border: 0;
+  border-radius: 8px;
+  color: #fffaf1;
+  cursor: pointer;
+  font-weight: 800;
+  min-height: 46px;
+  padding: 0 18px;
+  width: fit-content;
+}
+
+.admin-fields {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.admin-fields label {
+  color: #403a34;
+  display: grid;
+  font-weight: 800;
+  gap: 8px;
+}
+
+.wide-field {
+  grid-column: 1 / -1;
+}
+
+.admin-posts {
+  display: grid;
+  gap: 14px;
+}
+
+.admin-posts article {
+  align-items: start;
+  background: #f6f2ea;
+  border: 1px solid rgba(36, 33, 29, 0.1);
+  border-radius: 8px;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr auto;
+  padding: 18px;
+}
+
+.admin-posts button {
+  background: #24211d;
+}
+
 .qa {
   background: #f6f2ea;
 }
@@ -1004,6 +1278,14 @@ footer {
   width: 34px;
 }
 
+.footer-admin {
+  color: rgba(255, 250, 241, 0.58);
+  font-size: 13px;
+  font-weight: 800;
+  margin-left: auto;
+  text-decoration: none;
+}
+
 @media (max-width: 920px) {
   .site-header {
     align-items: start;
@@ -1041,6 +1323,11 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .admin-fields,
+  .admin-posts article {
+    grid-template-columns: 1fr;
+  }
+
   .method-steps article {
     grid-template-columns: 46px 1fr;
   }
@@ -1066,6 +1353,10 @@ footer {
   }
 
   .password-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-password-panel {
     grid-template-columns: 1fr;
   }
 
