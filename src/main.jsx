@@ -6,6 +6,7 @@ import {
   Clock3,
   Compass,
   GraduationCap,
+  Handshake,
   HelpCircle,
   HeartHandshake,
   LockKeyhole,
@@ -168,6 +169,34 @@ const demoSteps = [
     role: "倾听者",
     cue: "谢谢。我听到了。",
     detail: "倾听者用简单收尾闭合这一轮沟通，让表达者知道信息已经被接收。",
+  },
+];
+
+const wisdomQuotes = [
+  {
+    text: "君子以文会友，以友辅仁。",
+    source: "《论语》",
+    icon: UsersRound,
+  },
+  {
+    text: "灯盏各自不同，光却同归一处。",
+    source: "鲁米",
+    icon: Sparkles,
+  },
+  {
+    text: "如果你想遇见神，你必须先遇见人。",
+    source: "NVC 创始人卢森堡博士",
+    icon: Handshake,
+  },
+  {
+    text: "无论哪里有两三个人奉我的名聚会，那里就有我在他们中间。",
+    source: "耶稣",
+    icon: HeartHandshake,
+  },
+  {
+    text: "那些心意恒常专注于我、生命全然服务于我的人，他们彼此之间相互启发、谈论关于我的真理。他们永远沉浸在这种交流中，内心满是富足与超然的喜乐。",
+    source: "《薄伽梵歌》",
+    icon: BookOpen,
   },
 ];
 
@@ -2126,6 +2155,24 @@ function App() {
                 了解二人禅是什么
               </a>
             </div>
+          </div>
+        </section>
+
+        <section className="wisdom-strip reveal-on-scroll" aria-label="来自世界智慧传统的格言">
+          <div className="section-heading">
+            <p>世界智慧</p>
+            <h2>相遇、对话与共同照见</h2>
+          </div>
+          <div className="wisdom-grid">
+            {wisdomQuotes.map((quote) => (
+              <figure key={quote.source}>
+                <div className="wisdom-icon" aria-hidden="true">
+                  <quote.icon size={22} strokeWidth={1.8} />
+                </div>
+                <blockquote>{quote.text}</blockquote>
+                <figcaption>{quote.source}</figcaption>
+              </figure>
+            ))}
           </div>
         </section>
 
